@@ -1,0 +1,8 @@
+Simple API
+
+Representing a ToDo List and it's basic functionality
+
+1. Create new TodoList
+2. Add item to existing TodoList
+3. Remove item from TodoList
+4. Get all items of a specified TodoList
