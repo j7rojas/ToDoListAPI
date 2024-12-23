@@ -1,7 +1,10 @@
-package main
+package handlers
 
 import (
+	"ToDoListAPI/models"
+	"ToDoListAPI/utils"
 	"database/sql"
+	"fmt"
 	"github.com/go-chi/chi/v5"
 	"net/http"
 )
@@ -13,30 +16,32 @@ func CreateNewListHandler(db *sql.DB) http.HandlerFunc {
 		newToDoListName := chi.URLParam(r, "todoListName")
 
 		// TODO store new list in db
-		InsertTodo(db, newToDoListName, false)
+		if err := models.InsertNewTodo(db, newToDoListName); err != nil {
+			fmt.Println(err)
+			utils.JSONResponse(w, http.StatusInternalServerError, nil)
+		}
 
 		// TODO return created
-		w.WriteHeader(http.StatusCreated)
+		utils.JSONResponse(w, http.StatusCreated, nil)
 	}
 }
 
 // AddToListHandler TODO
-func AddToListHandler() http.HandlerFunc {
+func AddToListHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 
 	}
 }
 
 // GetListHandler TODO
-func GetListHandler() http.HandlerFunc {
+func GetListHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 
 	}
 }
 
 // RemoveFromListHandler TODO
-func RemoveFromListHandler() http.HandlerFunc {
+func RemoveFromListHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-
 	}
 }

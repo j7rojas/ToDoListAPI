@@ -1,5 +1,1 @@
-Simple APIRepresenting a ToDo List and it's basic functionality.
-1. Create new TodoList
-2. Add item to existing TodoList
-3. Remove item from TodoList
-4. Get all items of a specified TodoList
+Simple APIRepresenting a ToDo List and it's basic functionality.1. Create new TodoList2. Add item to existing TodoList3. Remove item from TodoList4. Get all items of a specified TodoListproject/├── main.go               # Entry point of the application├── config/│   └── db.go             # Database connection setup├── routes/│   └── routes.go         # Route setup and grouping├── handlers/│   └── todo.go           # Handlers for todo-related endpoints├── models/│   └── todo.go           # Struct definitions and DB operations for todo-related logic├── utils/│   └── response.go       # Helper method that write the response and encode json back to client└── go.mod                # Dependency management
