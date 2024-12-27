@@ -38,3 +38,22 @@ func InsertNewTodo(db *sql.DB, newTodoListName string) error {
 	}
 	return nil
 }
+
+func GetTodoList(db *sql.DB, todoListName string) error {
+	result, err := db.Exec("SELECT id, name, complete FROM todos WHERE LOWER(?) = LOWER(name)", todoListName)
+	if err != nil {
+		return fmt.Errorf("failed to insert todos: %w", err)
+	}
+
+	fmt.Println(result)
+	return nil
+}
+
+func InsertNewTask(db *sql.DB, newTaskName string, todoListId int) error {
+	_, err := db.Exec("INSERT INTO todo_items (name, todo_id) VALUES (?, ?)", newTaskName, todoListId)
+	if err != nil {
+		return fmt.Errorf("failed to insert task: %w", err)
+	}
+
+	return nil
+}
