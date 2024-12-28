@@ -11,6 +11,14 @@ import (
 
 // CreateNewListHandler TODO
 func CreateNewListHandler(db *sql.DB) http.HandlerFunc {
+	type Request struct {
+		todoListName string `json:"name"`
+	}
+
+	type Response struct {
+		todoListName string `json:"name"`
+	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 		// TODO get name from url parameter
 		newToDoListName := chi.URLParam(r, "todoListName")
